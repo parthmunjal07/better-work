@@ -7,7 +7,7 @@ A small, agent-neutral workflow for building projects with AI agents. It uses pl
 From the project root, run:
 
 ```sh
-npx @pm07/better-work
+npx @parthmunjal07/better-work
 ```
 
 This adds `AGENTS.md` with workflow instructions, an empty `Plan.md`, and editable templates in `specs/_template.md` and `changes/_templates/`. Existing files are always skipped.
@@ -17,7 +17,7 @@ Fill in `Plan.md` with the project's problem, tech stack, user story, and featur
 ## Plan a change
 
 ```sh
-npx @pm07/better-work new add-login
+npx @parthmunjal07/better-work new add-login
 ```
 
 This creates `changes/add-login/proposal.md`, `spec.md`, and `tasks.md` from the project's templates. The name must use lowercase letters, numbers, and hyphens. Running the command again preserves files you have edited.
@@ -34,7 +34,7 @@ This is a small version of the [OpenSpec change workflow](https://openspec.dev/d
 
 ## Publishing
 
-The package is configured for public access under the `@pm07` scope. From an npm account that can publish to that scope, run `npm publish` in this repository. The publish command runs the test suite first. Use `npm pack --dry-run` to inspect the package contents before publishing.
+The package is configured for public access under the `@parthmunjal07` scope. From an npm account that can publish to that scope, run `npm publish` in this repository. The publish command runs the test suite first. Use `npm pack --dry-run` to inspect the package contents before publishing.
 
 ## Development
 
