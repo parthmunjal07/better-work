@@ -1,0 +1,6 @@
+# Development files are kept in Git but are not needed by package users.
+/test/
+/req.md
+/coverage/
+/.github/
+/*.tgz

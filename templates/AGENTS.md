@@ -11,7 +11,7 @@ These instructions apply to agents working on this project, regardless of the ag
 ## Spec-driven development
 
 - Use `Plan.md` to capture the project's problem, tech stack, user story, and features before building the project.
-- For a feature or behavior change, create `changes/<name>/` with `npx @parthmunjal07/better-work new <name>`. Fill in its proposal, spec, and task list before coding.
+- For a feature or behavior change, create `changes/<name>/` with `npx @pm07/better-work new <name>`. Fill in its proposal, spec, and task list before coding.
 - Every spec must answer: What are we building? How should it behave? What must never happen? How will we verify it?
 - Give the user a chance to review the proposal, spec, and tasks. If they asked for approval, wait for it before implementing.
 - Work through `tasks.md` and check off each completed task. Verify the behavior described in the spec.
