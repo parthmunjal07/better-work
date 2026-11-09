@@ -1,0 +1,18 @@
+{
+  "name": "@parthmunjal07/better-work",
+  "version": "0.1.0",
+  "description": "A small, agent-neutral project workflow starter",
+  "bin": {
+    "better-work": "bin/better-work.js"
+  },
+  "files": [
+    "bin/",
+    "templates/"
+  ],
+  "scripts": {
+    "test": "node test/cli.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
