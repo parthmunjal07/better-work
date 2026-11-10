@@ -2,6 +2,13 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
+
+const designSkills = [
+  ['anthropics/skills', 'frontend-design'],
+  ['https://uizze.sh', 'ui-taste'],
+  ['nextlevelbuilder/ui-ux-pro-max-skill', 'ui-ux-pro-max'],
+];
 
 const starterFiles = [
   'AGENTS.md',
@@ -51,15 +58,34 @@ function createChange(cwd, name, output = console) {
   }
 }
 
-function run(args, cwd = process.cwd(), output = console) {
+function addDesignSkill(source, skill, cwd) {
+  execFileSync('npx', ['--yes', 'skills', 'add', source, '--skill', skill, '--agent', '*', '--yes'], {
+    cwd,
+    stdio: 'inherit',
+  });
+}
+
+function installDesignSkills(cwd, output, addSkill) {
+  for (const [source, skill] of designSkills) {
+    addSkill(source, skill, cwd);
+    output.log(`Installed ${skill} from ${source}`);
+  }
+}
+
+function run(args, cwd = process.cwd(), output = console, addSkill = addDesignSkill) {
   if (args.length === 0 || (args.length === 1 && args[0] === 'init')) {
     install(cwd, output);
+  } else if (args.length === 2 && args[0] === 'init' && args[1] === '--with-design-skills') {
+    install(cwd, output);
+    installDesignSkills(cwd, output, addSkill);
+  } else if (args.length === 1 && args[0] === 'design') {
+    installDesignSkills(cwd, output, addSkill);
   } else if (args.length === 2 && args[0] === 'new') {
     createChange(cwd, args[1], output);
   } else if (args.length === 1 && (args[0] === '--help' || args[0] === '-h')) {
-    output.log('Usage: better-work [init | new <change-name>]');
+    output.log('Usage: better-work [init [--with-design-skills] | design | new <change-name>]');
   } else {
-    throw new Error('Usage: better-work [init | new <change-name>]');
+    throw new Error('Usage: better-work [init [--with-design-skills] | design | new <change-name>]');
   }
 }
 

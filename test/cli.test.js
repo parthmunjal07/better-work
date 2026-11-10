@@ -105,3 +105,27 @@ test('rejects unsafe change names before writing files', () => withProject((proj
   assert.throws(() => execute(project, ['new', '../outside']), /Change name must use/);
   assert.deepEqual(fs.readdirSync(project), []);
 }));
+
+test('optionally preloads the requested design skills into the project', () => withProject((project) => {
+  const installed = [];
+  const messages = [];
+  run(['init', '--with-design-skills'], project, { log: (message) => messages.push(message) },
+    (source, skill, cwd) => installed.push([source, skill, cwd]));
+
+  assert.ok(fs.existsSync(path.join(project, 'AGENTS.md')));
+  assert.deepEqual(installed, [
+    ['anthropics/skills', 'frontend-design', project],
+    ['https://uizze.sh', 'ui-taste', project],
+    ['nextlevelbuilder/ui-ux-pro-max-skill', 'ui-ux-pro-max', project],
+  ]);
+  assert.ok(messages.includes('Installed ui-taste from https://uizze.sh'));
+}));
+
+test('design command installs skills without replacing project files', () => withProject((project) => {
+  fs.writeFileSync(path.join(project, 'AGENTS.md'), 'Custom instructions\n');
+  const installed = [];
+  run(['design'], project, { log() {} }, (source, skill) => installed.push(skill));
+
+  assert.deepEqual(installed, ['frontend-design', 'ui-taste', 'ui-ux-pro-max']);
+  assert.equal(fs.readFileSync(path.join(project, 'AGENTS.md'), 'utf8'), 'Custom instructions\n');
+}));

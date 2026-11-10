@@ -12,6 +12,14 @@ npx @parthmunjal07/better-work
 
 This adds `AGENTS.md` with workflow instructions, an empty `Plan.md`, and editable templates in `specs/_template.md` and `changes/_templates/`. Existing files are always skipped.
 
+For a project with frontend work, preload the three requested design skills during setup:
+
+```sh
+npx @parthmunjal07/better-work init --with-design-skills
+```
+
+Or add them later with `npx @parthmunjal07/better-work design`. This uses the [skills CLI](https://www.skills.sh/docs/cli) to install `frontend-design` from Anthropic, `ui-taste` from Uizze, and `ui-ux-pro-max` from NextLevelBuilder into the project for supported agents. It requires network access and runs the skills CLI three times. Review third-party skill instructions before using them.
+
 Fill in `Plan.md` with the project's problem, tech stack, user story, and features.
 
 ## Plan a change
