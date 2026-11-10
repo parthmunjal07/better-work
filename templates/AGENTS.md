@@ -2,6 +2,11 @@
 
 These instructions apply to agents working on this project, regardless of the agent tool in use.
 
+## Codebase architecture
+
+- Read `ARCHITECTURE.md` before changing application structure or business logic.
+- Apply its principles where relevant to the project and change. Keep the simplest design that meets the current requirements.
+
 ## Atomic commits
 
 - Make each commit one logical unit of change.

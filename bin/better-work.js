@@ -12,6 +12,7 @@ const designSkills = [
 
 const starterFiles = [
   'AGENTS.md',
+  'ARCHITECTURE.md',
   'Plan.md',
   path.join('specs', '_template.md'),
   path.join('changes', '_templates', 'proposal.md'),

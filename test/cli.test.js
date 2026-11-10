@@ -7,6 +7,7 @@ const test = require('node:test');
 const { run } = require('../bin/better-work');
 const generatedFiles = [
   'AGENTS.md',
+  'ARCHITECTURE.md',
   'Plan.md',
   'specs/_template.md',
   'changes/_templates/proposal.md',
@@ -52,8 +53,14 @@ test('creates the project workflow files', () => withProject((project) => {
   }
 
   const instructions = fs.readFileSync(path.join(project, 'AGENTS.md'), 'utf8');
+  assert.ok(instructions.includes('ARCHITECTURE.md'));
   assert.ok(instructions.includes('## Atomic commits'));
   assert.ok(instructions.includes('## Spec-driven development'));
+
+  const architecture = fs.readFileSync(path.join(project, 'ARCHITECTURE.md'), 'utf8');
+  assert.ok(architecture.includes('## Architecture & Project Structure'));
+  assert.ok(architecture.includes('## Development Workflow & AI Agent Rules'));
+  assert.match(architecture, /60\. Never overengineer:/);
 }));
 
 test('rerunning skips every existing file without changing it', () => withProject((project) => {

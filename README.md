@@ -10,7 +10,7 @@ From the project root, run:
 npx @parthmunjal07/better-work
 ```
 
-This adds `AGENTS.md` with workflow instructions, an empty `Plan.md`, and editable templates in `specs/_template.md` and `changes/_templates/`. Existing files are always skipped.
+This adds `AGENTS.md` with workflow instructions, `ARCHITECTURE.md` with codebase design principles, an empty `Plan.md`, and editable templates in `specs/_template.md` and `changes/_templates/`. Existing files are always skipped.
 
 For a project with frontend work, preload the three requested design skills during setup:
 
